@@ -1,0 +1,14 @@
+CONDICIONES DE CARRERA:
+	- Al insertar nuevas CinemaFunctions, mientras otro usuario consulta recursos que incluyan esa función, allí puede 
+	ocurrir que esta consulta no tenga el nuevo cine que se agregó.
+	- Al modificar CinemaFunctions, mientras otro usuario consulta recursos que incluyan esa función, allí puede 
+	ocurrir que esta consulta no tenga los nuevos valores de esa función.	
+
+REGIONES CRÍTICAS:
+	- Cuando se da acceso a la lista de CinemaFunctions de un cine
+	- Cuando se da acceso a la lista de asientos de un CinemaFunction
+
+Esto se soluciona utilizando:
+    - CopyOnWriteArrayList para la lista de CinemaFunction del cine y la matriz de asientos de cada CinemaFunction
+    - ConcurrentHashMap para el InMemoryCinemaPersistence
+

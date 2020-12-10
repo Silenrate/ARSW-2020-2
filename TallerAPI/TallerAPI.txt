@@ -1,0 +1,33 @@
+Integrantes:
+- Juan Sebastian Frasica Galeano
+- Daniel Felipe Walteros Trujillo
+
+1) Consultar todos los seminarios
+
+Method: GET
+URL:	api/seminars
+Status Response
+	200 - The list of all the seminars
+Response
+	Seminar[] object
+
+2) Incribir a un estudiante en un seminario
+
+
+Method: POST
+URL:	api/student/{id}/enroll?seminar={idSeminar}
+Status Response
+	200 - Enrollment Succesful
+	401 - Failed Enrollment
+Response
+	String object
+
+3) Consultar todos los seminarios de un estudiante
+
+Method: GET
+URL: api/student/{id}/seminars
+Status Response: 
+    404 - Not found Seminar
+    200 - The seminars of the student with {id}
+Response: List of seminars of a student
+

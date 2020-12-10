@@ -1,0 +1,71 @@
+{
+	"info": {
+		"_postman_id": "64c6ff1a-8c5c-4b15-b88d-9ecbd33374a5",
+		"name": "AddClassTeachToMe",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Agregar Clase",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b2eee8e0-50c9-4894-b047-4d578802aae6",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "76f0f80a-b478-4ea4-ba6e-e45d8142b934",
+						"exec": [
+							"console.log(data.description);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdWFuQGdtYWlsLmNvbSIsImF1dGhvcml0aWVzIjpbXSwiaWF0IjoxNjAyMDE4NjQ0LCJleHAiOjE2MDMxNzAwMDB9.YS2A2zNrqzL38zr9nbFcCPHB_4W7N48c97AP8ZTTWDA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"{{name}}\",\r\n    \"capacity\":{{capacity}},\r\n    \"description\":\"{{description}}\",\r\n    \"dateOfInit\":\"{{dateOfInit}}\",\r\n    \"dateOfEnd\":\"{{dateOfEnd}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://teach2-me.herokuapp.com/api/v1/users/juan@gmail.com/classes",
+					"protocol": "https",
+					"host": [
+						"teach2-me",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"juan@gmail.com",
+						"classes"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

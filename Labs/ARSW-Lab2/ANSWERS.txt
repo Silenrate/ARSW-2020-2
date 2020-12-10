@@ -1,0 +1,19 @@
+Solución implementada:
+
+- La vida de los inmortales fue convertida en una variable Atómica, con el fin de evitar condiciones de carrera en la vida de cada inmortal.
+
+- Al momento de que dos inmortales peleen se usan bloqueos sobre los dos inmortales para asegurar el cambio correcto de sus vidas, pero no se realiza en un bloqueo anidado que causa un deadlock sino en dos bloqueos secuenciales.
+
+- Después de la pelea, se pone un bloqueo sobre el notificador del programa, con el fin de evitar la rara pero posible condición de que se notifiquen dos acciones al mismo tiempo (Nos ocurrió en algún punto del laboratorio).
+
+- Dada la medida anterior y para evitar el hecho de que un inmortal "muerto" pelee, cuando la vida del inmortal llega a 0 el thread se detiene permanentemente y al momento de pelear se verifica que el inmortal siga vivo.
+
+Conclusiones:
+
+- Cuando se utilizan 10000 threads el rendimiento del juego decae enormemente, esto se debe en parte a la cantidad de núcleos del computador (en este caso cuatro) y a la cantidad de mecanismos de sincronización utilizados.
+
+- Aun existen posibles condiciones de carrera, la única forma de solucionarlas manteniendo las restricciones y el objetivo del juego sería evaluando el estado de cada thread durante cada acción que hace, lo cual sería completamente ineficiente.
+
+- La principal condición de carrera es el cambio de estado de un inmortal (muerto o vivo) mientras se decide el objetivo de ataque de otro inmortal, usando un bloqueo común en el proceso de decisión se puede reducir la condición de carrera, pero se vuelve ineficiente.
+
+- Si fuera posible tener un objeto que reciba dos inmortales sin hacer uso de variables comunes, no habría condiciones de carrera en la pelea puesto que solo se usaría un bloqueo sobre este objeto cuando tuviera a dos inmortales.

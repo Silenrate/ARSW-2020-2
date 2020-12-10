@@ -1,0 +1,57 @@
+Create Maven Project
+
+Creating Maven projects is based on the concept of an archetype. Think of an archetype as a predefined template, like a blueprint from which we can generate projects.
+
+Tasks
+
+Create a new maven project using the command mvn archetype:generate -B -DgroupId=edu.eci -DartifactId=file-spy, take screenshots.
+
+What do means the -B option in the command?
+
+This option means batch mode, without colors.
+
+What do means the -D option in the command?
+
+This option means that we are going to define a system property in manual form, in this case we define the groupId.
+
+What do means the groupId, artifactId properties in the command?
+
+The groupId means the name of the package of the classes that we are going to create,
+the artifactId is the name of the file where all the project is.
+
+Describe the content of the directory that has been created.
+
+The directory contains the Project Object Model (POM) and the source directory (src),
+the POM is the configuration file that contains the dependencies of the project.
+The src directory divides in two other directories, the main directory that have the source code
+and the test directory that have the soruce code for testing the project.
+Each directory have the package java/groupId that includes a basic java class for start the project ans the testing.
+
+Create the folders src/main/resources` and `src/test/resources
+
+POM file
+
+POM stands for Project Object Model And this file represents a one stop configuration for the entire project. Open the file to answer the next questions.
+
+Task:
+
+What do means the word SNAPSHOT in the version value?
+
+This means that the project is under development.
+
+What is the purpose of the packing tag into the POM file?
+
+This tag define the type of executable that is going to be generated when we deploy the project.
+
+What is the purpose of the dependencies and dependency tags into the POM file?
+
+Include other tools or projects that we use in our project.
+
+Task:
+
+Go to the MVNRepository and search fortika-core library. Add a new dependency to the POM file with the last version of this library.
+Replace the App class in the source folder with the FileSpy class provided in the workshop.
+
+What is the functionality of this class?
+
+Search files of a certaint type inside a directory.

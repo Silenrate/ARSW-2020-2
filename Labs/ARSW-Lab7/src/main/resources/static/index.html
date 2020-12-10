@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Cinema bookings</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <style>
+        .grid-container {
+            display: grid;
+            grid-column-gap: 60px;
+            grid-template-columns: auto auto;
+            padding: 10px;
+            text-indent: 30px;
+        }
+
+
+    </style>
+</head>
+<body>
+<header>
+    <h1> Cinema bookings </h1>
+</header>
+<br>
+
+<div>
+    <label for="nombre">Cinema</label>
+    <input type="text" id="nombre" name="nombre" placeholder="Name">
+    <input type="text" id="fecha" name="fecha" placeholder="Date">
+    <button type="button" class="btn btn-primary" onclick="app.getFunctionsByCinemaAndDate()">Get functions</button>
+</div>
+
+<div class="grid-container">
+    <div class="grid-item">
+        <h2 id="nombreCine"> Cinema selected: </h2>
+        <h2> Movies: </h2>
+        <table class="table ">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Genre</th>
+                <th scope="col">Hour</th>
+                <th scope="col">Availability</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+    <div class="grid-item" id="myCanvas">
+        <h2 id="moviename">Availability of: </h2>
+        <canvas id="canvas" width="700" height="500" style="border:1px solid #000000;"></canvas>
+
+        <div class="card border-dark mb-3" style="max-width: 43.5rem;">
+            <div class="card-header" style="text-align: center">Seats detail:</div>
+            <div class="card-body text-dark">
+
+                <div id="ticket" style="text-align: center">
+<!--                    <label for="nombre">You selected seat #:</label>-->
+<!--                    <br>-->
+
+                    <button type="button" class="btn btn-primary" onclick="app.getMousePosition()">Buy ticket</button>
+                    <br>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="card border-dark mb-3" style="max-width: 43.5rem;">
+            <div class="card-header" style="text-align: center">Administrator mode:</div>
+            <div class="card-body text-dark">
+
+                <div id="admin" style="text-align: center">
+                    <label for="nombre">Edit function:</label>
+                    <input type="text" id="hora" name="hora" placeholder="New hour">
+                    <br>
+                </div>
+
+                <div id="save" style="text-align: center">
+                    <br>
+                    <button type="button" class="btn btn-warning" onclick="app.saveOrUpdate()">Save/Update</button>
+                </div>
+
+                <br>
+                <br>
+
+                <div style="text-align: center">
+                    <button type="button" class="btn btn-primary" onclick="app.crearLabelsEInputs()">Create new function</button>
+                    <button type="button" class="btn btn-danger" onclick="app.deleteFunction()">Delete function</button>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+
+<script src="/webjars/sockjs-client/sockjs.min.js"></script>
+<script src="/webjars/stomp-websocket/stomp.min.js"></script>
+<script src="js/stompCinema.js"></script>
+<script src="js/stompModel.js"></script>
+<script src="js/apimock.js"></script>
+<script src="js/apiclient.js"></script>
+<script src="js/app.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"
+        integrity="sha512-quHCp3WbBNkwLfYUMd+KwBAgpVukJu5MncuQaWXgCrfgcxCJAq/fo+oqrRKOj+UKEmyMCG3tb8RB63W+EmrOBg=="
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="sweetalert2.all.min.js"></script>
+<!-- Optional: include a polyfill for ES6 Promises for IE11 -->
+<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+</html>

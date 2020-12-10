@@ -1,0 +1,24 @@
+Posibles condiciones de carrera
+
+ - La asignación incorrecta de que 2 serpientes al mismo tiempo consigan el mismo poder, ratón o choquen con la misma barrera.
+
+ - Un error de asignación del espacio cuando 2 serpientes se mueven al mismo lugar y alguna crece.
+
+Uso inapropiado de colecciones
+
+ - Ya que para dibujar los componentes se examina todo el cuerpo de cada serpiente, ocurren errores en el momento en el que esta variable se modifica por el crecimeiento de la serpiente.
+
+Uso inapropiado de esperas activas
+
+ - Para notificar el estado final del juego, se revisa constante e innecesariamente el estado de las serpientes.
+
+ Soluciones
+
+ - Posibles condiciones de carrera:
+    Cuando la serpiente se va a mover, pone un bloqueo sobre la celda a la que se va a mover para verificar si hay algo, de esta forma, es imposible que dos serpientes consigan el mismo poder.
+
+ - Uso inapropiado de colecciones:
+    Revisando el comportamiento del cuerpo de la serpiente en una Linked List decidimos convertirla en una Concurrent Linked Deque, esto evito que al dibujar hubiera errores de concurrencia.
+
+ - Uso inapropiado de esperas activas:
+    Si la ultima serpiente notifica el estado final al morir, desaparece la necesidad de evaluar esto constantemente, aunque el estado de la ultima serpiente viva se muestra en RUNNING, ya que esta fue la que notificó.
