@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Open Weather Map</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/apiclient.js"></script>
+    <script>
+        function actualTime(){
+            var d = new Date();
+            var hour = d.getHours();
+            var minutes = d.getMinutes();
+            var hora = (hour < 13) ? "am" : "pm";
+            var minutos = (minutes < 10) ? "0"+minutes : minutes;
+            var mes = d.getMonth()+1;
+            $("#time").text("System Hour Ingress "+hour+":"+minutos+hora+", "+mes+"/"+d.getDate());
+        }
+    </script>
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+            background-color: grey;
+        }
+        .body {
+            background-color: #B8DAF0;
+        }
+        .grid-container {
+            display: grid;
+            grid-column-gap: 60px;
+            grid-template-columns: auto auto;
+            padding: 10px;
+            text-indent: 00px;
+        }
+
+
+    </style>
+</head>
+
+<body class="body" onload="actualTime()">
+<h1>Open Weather Map</h1>
+
+<input id="name" type="text" placeholder="Place to search"/>
+<button onclick="app.buscar($('#name').val())" class="btn btn-primary">Search</button>
+<div class="current-container mobile-padding" style="justify-content: start;">
+    <div>
+        <span id="time" class="orange-text"></span>
+        <h2 id="place" style="margin-top: 0px;"></h2>
+    </div>
+    <div class="grid-container">
+        <div class="grid-item">
+            <img id="icon" src="/images/rain.png"
+                 class="weather-icon"
+                 style="margin-left: -10px;">
+            <span id="temp" class="heading">0°C</span><br>
+            <span id="thermal" style="font-weight: bold;">Feels like 0°C</span>
+        </div>
+        <div class="grid-item">
+            <span id="speed" class="symbol">Wind Speed: 0 m/s</span><br>
+            <span id="pressure" class="symbol">Pressure: 0 hPa</span><br>
+            <span id="humidity" class="symbol">Humidity: 0%</span><br>
+        </div>
+    </div>
+</div>
+<div id="map"></div>
+</body>
+</html>

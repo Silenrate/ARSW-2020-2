@@ -1,0 +1,6 @@
+edu.eci.arsw.openweather
+edu.eci.arsw.openweather.cache
+edu.eci.arsw.openweather.connection
+edu.eci.arsw.openweather.controllers
+edu.eci.arsw.openweather.model
+edu.eci.arsw.openweather.services
